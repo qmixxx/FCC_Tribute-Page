@@ -1,28 +1,220 @@
+<!--  
+#User Story #1: I can see a title with id="title" in H1 sized text.
+
+#User Story #2: I can see a short explanation with id="description" in P sized text.
+
+#User Story #3: I can see a form with id="survey-form".
+
+#User Story #4: Inside the form element, I am required to enter my name in a field with id="name".
+
+#User Story #5: Inside the form element, I am required to enter an email in a field with id="email".
+
+User Story #6: If I enter an email that is not formatted correctly, I will see an HTML5 validation error.
+
+#User Story #7: Inside the form, I can enter a number in a field with id="number".
+
+User Story #8: If I enter non-numbers in the number input, I will see an HTML5 validation error.
+
+User Story #9: If I enter numbers outside the range of the number input, which are defined by the min and max attributes, I will see an HTML5 validation error.
+
+User Story #10: For the name, email, and number input fields inside the form I can see corresponding labels that describe the purpose of each field with the following ids: id="name-label", id="email-label", and id="number-label".
+
+User Story #11: For the name, email, and number input fields, I can see placeholder text that gives me a description or instructions for each field.
+
+User Story #12: Inside the form element, I can select an option from a dropdown that has a corresponding id="dropdown".
+
+User Story #13: Inside the form element, I can select a field from one or more groups of radio buttons. Each group should be grouped using the name attribute.
+
+User Story #14: Inside the form element, I can select several fields from a series of checkboxes, each of which must have a value attribute.
+
+User Story #15: Inside the form element, I am presented with a textarea at the end for additional comments.
+
+#User Story #16: Inside the form element, I am presented with a button with id="submit" to submit all my inputs.
+-->
+
 <head>
-<h1 id="title">freeCodeCamp Survey Form</h1>
+<h1 id="title" class="text-center" >freeCodeCamp Survey Form</h1>
 </head>
+<style>
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: darkblue;
+  background: lightgrey;
+  background-position: center;
+  margin: 0;
+    background-image: linear-gradient(
+      115deg,
+      rgba(50, 100, 158, 0.5),
+      rgba(136, 136, 206, 0.5)
+    );
+  background-size: cover;
+     
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+#description{
+  font-family: Luminari;  
+}
+
+#title{
+  font-family: Luminari, fantasy;  
+}
+
+form {
+  background: darkblue-alpha;
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  form {
+    padding: 2.5rem;
+  }
+}
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 2.375rem;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+</style>
+
+
 <body>
-    <main id="main">
-		<h1> </h1>
-		<div id="img-div">
-			<img id="image" src="" border="0" alt=""" width="810px" height="auto">
-			<figcaption id="img-caption"></figcaption>
-            <section id="tribute-info">
-				<h3 id="headline"></h3>
-				<ul>
-					<li><strong></li>
-				</ul>
-				<p id="description"></p>
-				<form id="survey-form">
-					<input id="name"></input>
-					<input id="email"></input>
-					<input id="number"></input>
-					<input id="dropdown"></input>
-					<textarea  id="textarea "></input>
-					<button  id="submit ">Submit</button>
+<p id="description" class="description text-center">Thank you for taking the time to help us improve the platform</p>
+<form id="survey-form">
+  <div class="form-group">
+<label id="name-label" for="Name">Name</label>
+      <input
+        type="name"
+        name="name"
+        id="name"
+        class="form-control"
+        placeholder="Enter your Name"
+        required
+      />
+  </div>
+  <div class="form-group">
+<label id="email-label" for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="Enter your Email"
+        required
+      />
+  </div>
+       <div class="form-group">
+      <label id="number-label" for="number"
+        >Age<span class="clue">(optional)</span></label
+      >
+      <input
+        type="number"
+        name="age"
+        id="number"
+        min="10"
+        max="99"
+        class="form-control"
+        placeholder="Age"
+      />
+    </div>
+    <div class="form-group">
+      <p>Which option best describes your current role?</p>
+      <select id="dropdown" name="role" class="form-control" required>
+        <option disabled selected value>Select current role</option>
+        <option value="student">Student</option>
+        <option value="job">Full Time Job</option>
+        <option value="learner">Full Time Learner</option>
+        <option value="preferNo">Prefer not to say</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <p>Would you recommend freeCodeCamp to a friend?</p>
+      <label>
+        <input
+          name="user-recommend"
+          value="definitely"
+          type="radio"
+          class="input-radio"
+          checked
+        />Definitely</label
+      >
+      <label>
+        <input
+          name="user-recommend"
+          value="maybe"
+          type="radio"
+          class="input-radio"
+        />Maybe</label
+      >
+
+      <label
+        ><input
+          name="user-recommend"
+          value="not-sure"
+          type="radio"
+          class="input-radio"
+        />Not sure</label
+      >
+    </div>
+   <div class="form-group">
+      <p>Any comments or suggestions?</p>
+      <textarea
+        id="comments"
+        class="input-textarea"
+        name="comment"
+        placeholder="Enter your comment here..."
+      ></textarea>
+    </div>
+<button type="submit" id="submit" class="submit-button">Submit</button>
 				</form>
 				</section>                          
 		</div>
     </main>
 </body>
 </html>
+
+<!--  -->
